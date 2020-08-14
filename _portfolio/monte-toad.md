@@ -9,13 +9,10 @@ This is a portfolio of screenshots and rendering from my current work in progres
 
 The editor displaying the glTF flight helmet
 
-![](https://aodq.net/files/4k-interior.png)
+![](https://aodq.net/files/bunny.png)
 
-interior of a church at ~2k resolution
-
-![](https://aodq.net/files/amazon-lumberyard-1.png)
-
-amazon lumberyard rendering, before textures were supported
+bunny rendering with complex-ish material (specular and multiple transmittive
+  BSDFs, with an absorption coefficient)
 
 ![](https://aodq.net/files/bottle-noisy.png)
 
@@ -24,11 +21,6 @@ bottle before passed through open image denoiser
 ![](https://aodq.net/files/bottle-denoised.png)
 
 bottle after passed through open image denoiser
-
-![](https://aodq.net/files/bunny.png)
-
-bunny rendering with complex-ish material (specular and multiple transmittive
-  BSDFs, with an absorption coefficient)
 
 ![](https://aodq.net/files/dragon-glass.png)
 
@@ -58,6 +50,10 @@ displays open image denoiser with and with albedo/normal
 
 displays open image denoiser at multiple levels of SPP
 
+![](https://aodq.net/files/4k-interior.png)
+
+interior of a church at ~2k resolution, with noisy/denoised split in half
+
 ![](https://aodq.net/files/muhcar.png)
 
 obligatory car rendering
@@ -71,6 +67,11 @@ yoda with various material compositions
 ![](https://aodq.net/files/water-thing.png)
 
 cornell box with water
+
+![](https://aodq.net/files/amazon-lumberyard-1.png)
+
+amazon lumberyard rendering, before textures were supported
+
 
 ![](https://aodq.net/files/world-globse.png)
 
