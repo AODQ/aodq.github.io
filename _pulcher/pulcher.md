@@ -41,4 +41,4 @@ I plan on doing writeups in the future of the work involved once it is in a more
 Several (unsophisticated) AI used to benchmark/test the weapons and physics
 collision in the game
 
-<a href=https://aodq.net/files/pulcher.tar.gz>Linux Download here</a>
+The game is not available for testing yet
