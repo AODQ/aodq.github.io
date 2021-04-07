@@ -15,8 +15,8 @@ Education
 
 Work experience
 ======
-* 2018 - present: Real-Time Graphics Engineer
-  * Leidos
+* 2021 - present: Graphics Engineer @ Apple
+* 2018 - 2021: Real-Time Graphics Engineer @ Leidos
   * C++, OpenGL
 
 Skills
