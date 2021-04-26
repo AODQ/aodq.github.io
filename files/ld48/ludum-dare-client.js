@@ -187,7 +187,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/resources/miner.png", "start": 0, "end": 2934, "audio": 0}, {"filename": "/resources/slime2.ogg", "start": 2934, "end": 10788, "audio": 1}, {"filename": "/resources/surfaced-foreground.png", "start": 10788, "end": 326156, "audio": 0}, {"filename": "/resources/hit3.ogg", "start": 326156, "end": 333278, "audio": 1}, {"filename": "/resources/rock-damage.png", "start": 333278, "end": 334288, "audio": 0}, {"filename": "/resources/gems.png", "start": 334288, "end": 336297, "audio": 0}, {"filename": "/resources/cargo.png", "start": 336297, "end": 338332, "audio": 0}, {"filename": "/resources/misc.png", "start": 338332, "end": 339955, "audio": 0}, {"filename": "/resources/hit1.ogg", "start": 339955, "end": 347074, "audio": 1}, {"filename": "/resources/flag.png", "start": 347074, "end": 347817, "audio": 0}, {"filename": "/resources/slime1.ogg", "start": 347817, "end": 355952, "audio": 1}, {"filename": "/resources/upgrades.png", "start": 355952, "end": 356984, "audio": 0}, {"filename": "/resources/rocks.png", "start": 356984, "end": 361532, "audio": 0}, {"filename": "/resources/hit4.ogg", "start": 361532, "end": 368829, "audio": 1}, {"filename": "/resources/mine.ogg", "start": 368829, "end": 1306360, "audio": 1}, {"filename": "/resources/surfaced-foreground-new.png", "start": 1306360, "end": 1433844, "audio": 0}, {"filename": "/resources/hit2.ogg", "start": 1433844, "end": 1441220, "audio": 1}, {"filename": "/resources/slime4.ogg", "start": 1441220, "end": 1449354, "audio": 1}, {"filename": "/resources/slime3.ogg", "start": 1449354, "end": 1457435, "audio": 1}], "remote_package_size": 1457435, "package_uuid": "2e4fbc6c-fba2-4330-8380-9e72de51dafd"});
+   loadPackage({"files": [{"filename": "/resources/miner.png", "start": 0, "end": 2934, "audio": 0}, {"filename": "/resources/slime2.ogg", "start": 2934, "end": 10788, "audio": 1}, {"filename": "/resources/surfaced-foreground.png", "start": 10788, "end": 326156, "audio": 0}, {"filename": "/resources/hit3.ogg", "start": 326156, "end": 333278, "audio": 1}, {"filename": "/resources/rock-damage.png", "start": 333278, "end": 334288, "audio": 0}, {"filename": "/resources/gems.png", "start": 334288, "end": 336297, "audio": 0}, {"filename": "/resources/cargo.png", "start": 336297, "end": 338332, "audio": 0}, {"filename": "/resources/misc.png", "start": 338332, "end": 339955, "audio": 0}, {"filename": "/resources/hit1.ogg", "start": 339955, "end": 347074, "audio": 1}, {"filename": "/resources/flag.png", "start": 347074, "end": 347817, "audio": 0}, {"filename": "/resources/slime1.ogg", "start": 347817, "end": 355952, "audio": 1}, {"filename": "/resources/upgrades.png", "start": 355952, "end": 356984, "audio": 0}, {"filename": "/resources/rocks.png", "start": 356984, "end": 361532, "audio": 0}, {"filename": "/resources/hit4.ogg", "start": 361532, "end": 368829, "audio": 1}, {"filename": "/resources/mine.ogg", "start": 368829, "end": 1306360, "audio": 1}, {"filename": "/resources/surfaced-foreground-new.png", "start": 1306360, "end": 1433844, "audio": 0}, {"filename": "/resources/hit2.ogg", "start": 1433844, "end": 1441220, "audio": 1}, {"filename": "/resources/slime4.ogg", "start": 1441220, "end": 1449354, "audio": 1}, {"filename": "/resources/slime3.ogg", "start": 1449354, "end": 1457435, "audio": 1}], "remote_package_size": 1457435, "package_uuid": "12253b2f-5754-4036-91ac-2c4833addb77"});
   
   })();
   
@@ -1862,7 +1862,16 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  
+  42056: function() {if ((window.AudioContext || window.webkitAudioContext) === undefined) { return 0; } if (typeof(miniaudio) === 'undefined') { miniaudio = {}; miniaudio.devices = []; miniaudio.track_device = function(device) { for (var iDevice = 0; iDevice < miniaudio.devices.length; ++iDevice) { if (miniaudio.devices[iDevice] == null) { miniaudio.devices[iDevice] = device; return iDevice; } } miniaudio.devices.push(device); return miniaudio.devices.length - 1; }; miniaudio.untrack_device_by_index = function(deviceIndex) { miniaudio.devices[deviceIndex] = null; while (miniaudio.devices.length > 0) { if (miniaudio.devices[miniaudio.devices.length-1] == null) { miniaudio.devices.pop(); } else { break; } } }; miniaudio.untrack_device = function(device) { for (var iDevice = 0; iDevice < miniaudio.devices.length; ++iDevice) { if (miniaudio.devices[iDevice] == device) { return miniaudio.untrack_device_by_index(iDevice); } } }; miniaudio.get_device_by_index = function(deviceIndex) { return miniaudio.devices[deviceIndex]; }; miniaudio.unlock_event_types = (function(){ return ['touchstart', 'touchend', 'click']; })(); miniaudio.unlock = function() { for(var i = 0; i < miniaudio.devices.length; ++i) { var device = miniaudio.devices[i]; if (device != null && device.webaudio != null && device.state === 2 ) { device.webaudio.resume(); } } miniaudio.unlock_event_types.map(function(event_type) { document.removeEventListener(event_type, miniaudio.unlock, true); }); }; miniaudio.unlock_event_types.map(function(event_type) { document.addEventListener(event_type, miniaudio.unlock, true); }); } return 1;},  
+ 43654: function() {return (navigator.mediaDevices !== undefined && navigator.mediaDevices.getUserMedia !== undefined);},  
+ 43758: function() {try { var temp = new (window.AudioContext || window.webkitAudioContext)(); var sampleRate = temp.sampleRate; temp.close(); return sampleRate; } catch(e) { return 0; }},  
+ 43929: function($0, $1, $2, $3, $4) {var channels = $0; var sampleRate = $1; var bufferSize = $2; var isCapture = $3; var pDevice = $4; if (typeof(miniaudio) === 'undefined') { return -1; } var device = {}; device.webaudio = new (window.AudioContext || window.webkitAudioContext)({sampleRate:sampleRate}); device.webaudio.suspend(); device.state = 1; device.intermediaryBufferSizeInBytes = channels * bufferSize * 4; device.intermediaryBuffer = Module._malloc(device.intermediaryBufferSizeInBytes); device.intermediaryBufferView = new Float32Array(Module.HEAPF32.buffer, device.intermediaryBuffer, device.intermediaryBufferSizeInBytes); device.scriptNode = device.webaudio.createScriptProcessor(bufferSize, channels, channels); if (isCapture) { device.scriptNode.onaudioprocess = function(e) { if (device.intermediaryBuffer === undefined) { return; } if(device.intermediaryBufferView.length == 0) { device.intermediaryBufferView = new Float32Array(Module.HEAPF32.buffer, device.intermediaryBuffer, device.intermediaryBufferSizeInBytes); } for (var iChannel = 0; iChannel < e.outputBuffer.numberOfChannels; ++iChannel) { e.outputBuffer.getChannelData(iChannel).fill(0.0); } var sendSilence = false; if (device.streamNode === undefined) { sendSilence = true; } if (e.inputBuffer.numberOfChannels != channels) { console.log("Capture: Channel count mismatch. " + e.inputBufer.numberOfChannels + " != " + channels + ". Sending silence."); sendSilence = true; } var totalFramesProcessed = 0; while (totalFramesProcessed < e.inputBuffer.length) { var framesRemaining = e.inputBuffer.length - totalFramesProcessed; var framesToProcess = framesRemaining; if (framesToProcess > (device.intermediaryBufferSizeInBytes/channels/4)) { framesToProcess = (device.intermediaryBufferSizeInBytes/channels/4); } if (sendSilence) { device.intermediaryBufferView.fill(0.0); } else { for (var iFrame = 0; iFrame < framesToProcess; ++iFrame) { for (var iChannel = 0; iChannel < e.inputBuffer.numberOfChannels; ++iChannel) { device.intermediaryBufferView[iFrame*channels + iChannel] = e.inputBuffer.getChannelData(iChannel)[totalFramesProcessed + iFrame]; } } } ccall("ma_device_process_pcm_frames_capture__webaudio", "undefined", ["number", "number", "number"], [pDevice, framesToProcess, device.intermediaryBuffer]); totalFramesProcessed += framesToProcess; } }; navigator.mediaDevices.getUserMedia({audio:true, video:false}) .then(function(stream) { device.streamNode = device.webaudio.createMediaStreamSource(stream); device.streamNode.connect(device.scriptNode); device.scriptNode.connect(device.webaudio.destination); }) .catch(function(error) { device.scriptNode.connect(device.webaudio.destination); }); } else { device.scriptNode.onaudioprocess = function(e) { if (device.intermediaryBuffer === undefined) { return; } if(device.intermediaryBufferView.length == 0) { device.intermediaryBufferView = new Float32Array(Module.HEAPF32.buffer, device.intermediaryBuffer, device.intermediaryBufferSizeInBytes); } var outputSilence = false; if (e.outputBuffer.numberOfChannels != channels) { console.log("Playback: Channel count mismatch. " + e.outputBufer.numberOfChannels + " != " + channels + ". Outputting silence."); outputSilence = true; return; } var totalFramesProcessed = 0; while (totalFramesProcessed < e.outputBuffer.length) { var framesRemaining = e.outputBuffer.length - totalFramesProcessed; var framesToProcess = framesRemaining; if (framesToProcess > (device.intermediaryBufferSizeInBytes/channels/4)) { framesToProcess = (device.intermediaryBufferSizeInBytes/channels/4); } ccall("ma_device_process_pcm_frames_playback__webaudio", "undefined", ["number", "number", "number"], [pDevice, framesToProcess, device.intermediaryBuffer]); if (outputSilence) { for (var iChannel = 0; iChannel < e.outputBuffer.numberOfChannels; ++iChannel) { e.outputBuffer.getChannelData(iChannel).fill(0.0); } } else { for (var iChannel = 0; iChannel < e.outputBuffer.numberOfChannels; ++iChannel) { for (var iFrame = 0; iFrame < framesToProcess; ++iFrame) { e.outputBuffer.getChannelData(iChannel)[totalFramesProcessed + iFrame] = device.intermediaryBufferView[iFrame*channels + iChannel]; } } } totalFramesProcessed += framesToProcess; } }; device.scriptNode.connect(device.webaudio.destination); } return miniaudio.track_device(device);},  
+ 48207: function($0) {return miniaudio.get_device_by_index($0).webaudio.sampleRate;},  
+ 48273: function($0) {var device = miniaudio.get_device_by_index($0); if (device.scriptNode !== undefined) { device.scriptNode.onaudioprocess = function(e) {}; device.scriptNode.disconnect(); device.scriptNode = undefined; } if (device.streamNode !== undefined) { device.streamNode.disconnect(); device.streamNode = undefined; } device.webaudio.close(); device.webaudio = undefined; if (device.intermediaryBuffer !== undefined) { Module._free(device.intermediaryBuffer); device.intermediaryBuffer = undefined; device.intermediaryBufferView = undefined; device.intermediaryBufferSizeInBytes = undefined; } miniaudio.untrack_device_by_index($0);},  
+ 48899: function($0) {var device = miniaudio.get_device_by_index($0); device.webaudio.resume(); device.state = 2;},  
+ 48995: function($0) {var device = miniaudio.get_device_by_index($0); device.webaudio.resume(); device.state = 2;},  
+ 49091: function($0) {var device = miniaudio.get_device_by_index($0); device.webaudio.suspend(); device.state = 1;},  
+ 49188: function($0) {var device = miniaudio.get_device_by_index($0); device.webaudio.suspend(); device.state = 1;}
 };
 
 
@@ -4534,6 +4543,34 @@ var ASM_CONSTS = {
 
   function _abort() {
       abort();
+    }
+
+  var readAsmConstArgsArray=[];
+  function readAsmConstArgs(sigPtr, buf) {
+      // Nobody should have mutated _readAsmConstArgsArray underneath us to be something else than an array.
+      assert(Array.isArray(readAsmConstArgsArray));
+      // The input buffer is allocated on the stack, so it must be stack-aligned.
+      assert(buf % 16 == 0);
+      readAsmConstArgsArray.length = 0;
+      var ch;
+      // Most arguments are i32s, so shift the buffer pointer so it is a plain
+      // index into HEAP32.
+      buf >>= 2;
+      while (ch = HEAPU8[sigPtr++]) {
+        assert(ch === 100/*'d'*/ || ch === 102/*'f'*/ || ch === 105 /*'i'*/);
+        // A double takes two 32-bit slots, and must also be aligned - the backend
+        // will emit padding to avoid that.
+        var double = ch < 105;
+        if (double && (buf & 1)) buf++;
+        readAsmConstArgsArray.push(double ? HEAPF64[buf++ >> 1] : HEAP32[buf]);
+        ++buf;
+      }
+      return readAsmConstArgsArray;
+    }
+  function _emscripten_asm_const_int(code, sigPtr, argbuf) {
+      var args = readAsmConstArgs(sigPtr, argbuf);
+      if (!ASM_CONSTS.hasOwnProperty(code)) abort('No EM_ASM constant found at address ' + code);
+      return ASM_CONSTS[code].apply(null, args);
     }
 
   var JSEvents={inEventHandler:0,removeAllEventListeners:function() {
@@ -8791,6 +8828,10 @@ var ASM_CONSTS = {
       GLFW.hints[target] = hint;
     }
 
+  function _pthread_create() {
+      return 6;
+    }
+
   function _pthread_join() {
       return 28;
     }
@@ -8910,6 +8951,7 @@ var asmLibraryArg = {
   "__sys_ioctl": ___sys_ioctl,
   "__sys_open": ___sys_open,
   "abort": _abort,
+  "emscripten_asm_const_int": _emscripten_asm_const_int,
   "emscripten_get_element_css_size": _emscripten_get_element_css_size,
   "emscripten_get_gamepad_status": _emscripten_get_gamepad_status,
   "emscripten_get_num_gamepads": _emscripten_get_num_gamepads,
@@ -9167,6 +9209,7 @@ var asmLibraryArg = {
   "glfwSwapInterval": _glfwSwapInterval,
   "glfwTerminate": _glfwTerminate,
   "glfwWindowHint": _glfwWindowHint,
+  "pthread_create": _pthread_create,
   "pthread_join": _pthread_join,
   "setTempRet0": _setTempRet0,
   "time": _time
